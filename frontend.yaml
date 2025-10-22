@@ -35,4 +35,27 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+---apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app5
+  labels:
+    app: frontend1
+spec:
+  replicas: 2 # Fixed typo
+  selector:
+    matchLabels:
+      app: frontend1
+  template:
+    metadata:
+      labels:
+        app: frontend1
+    spec:
+      containers:
+        - name: app5
+          image: "{{ .Values.image2.repository }}:{{ .Values.image2.tag }}"
+          ports:
+            - containerPort: 80  # Fixed key name
+
+
 
