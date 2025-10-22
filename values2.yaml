@@ -1,2 +1,3 @@
 image:
-  repository: ganesh6498/deploy1:latest
+  repository: ganesh6498/deploy1
+  tag:  latest
