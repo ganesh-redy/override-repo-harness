@@ -5,7 +5,7 @@ metadata:
   labels:
     app: frontend1
 spec:
-  replicas: 5  # Fixed typo
+  replicas: 2 # Fixed typo
   selector:
     matchLabels:
       app: frontend1
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app5
-          image: ganesh6498/deploy3:latest
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 80  # Fixed key name
 
