@@ -1,2 +1,2 @@
 image:
-  repository: <+serviceVariables.dockername2>
+  repository: ganesh6498/deploy1:latest
