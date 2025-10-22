@@ -1,3 +1,6 @@
 image:
   repository: ganesh6498/deploy2
   tag:  latest
+image2:
+  repository: <+serviceVariables.dockername>
+  tag:  <+serviceVariables.tag>
