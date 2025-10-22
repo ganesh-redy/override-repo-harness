@@ -1,6 +1,8 @@
+# Default values.yaml
 image:
   repository: ganesh6498/deploy2
-  tag:  latest
+  tag: latest
+
 image2:
   repository: <+serviceVariables.dockername>
-  tag:  <+serviceVariables.tag>
+  tag: <+serviceVariables.tag>
