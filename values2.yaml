@@ -1,6 +1,6 @@
 # Default values.yaml
 image:
-  repository: ganesh6498/deploy2
+  repository: ganesh6498/deploy3
   tag: latest
 
 image2:
