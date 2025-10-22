@@ -1,0 +1,3 @@
+image:
+  repository: <+pipeline.variables.docker>
+  tag:  <+pipeline.variables.tag>
