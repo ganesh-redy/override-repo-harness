@@ -1,3 +1,5 @@
+# Deployment for app1
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,7 +7,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 5  # Fixed typo
+  replicas: 5
   selector:
     matchLabels:
       app: frontend
@@ -18,11 +20,10 @@ spec:
         - name: app1
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: 80  # Fixed key name
+            - containerPort: 80
 
+# Service for app1
 ---
-
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -35,14 +36,17 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
----apiVersion: apps/v1
+
+# Deployment for app5
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app5
   labels:
     app: frontend1
 spec:
-  replicas: 2 # Fixed typo
+  replicas: 2
   selector:
     matchLabels:
       app: frontend1
@@ -55,7 +59,4 @@ spec:
         - name: app5
           image: "{{ .Values.image2.repository }}:{{ .Values.image2.tag }}"
           ports:
-            - containerPort: 80  # Fixed key name
-
-
-
+            - containerPort: 80
