@@ -3,4 +3,4 @@ image:
   tag:  <+serviceVariables.tag>
 
 secret:
-  db_password: <+secrets.getValue("db_password_secret")>
+  db_password: <+serviceVariables.git>
