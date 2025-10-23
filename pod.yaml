@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: print-vars
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: print-vars
+  template:
+    metadata:
+      labels:
+        app: print-vars
+    spec:
+      containers:
+        - name: print-vars
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "===== Printing Service Variables =====";
+              echo "Docker Image  : {{ .Values.image.repository }}";
+              echo "Tag           : {{ .Values.image.tag }}";
+              echo "Secret Value  : $(DB_PASSWORD)";
+              echo "=====================================";
+              sleep 3600;
+          env:
+            - name: DB_PASSWORD
+              value: "{{ .Values.secret.db_password }}"
