@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: print-vars
+spec:
+  containers:
+    - name: print-vars
+      image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          echo "===== Printing Service Variables =====";
+          echo "Docker Image  : {{ .Values.image.repository }}";
+          echo "Tag           : {{ .Values.image.tag }}";
+          echo "Secret Value  : $DB_PASSWORD";
+          echo "=====================================";
+          sleep 3600
+      env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: print-secret
+              key: password
